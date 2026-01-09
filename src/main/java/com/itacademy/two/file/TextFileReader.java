@@ -17,6 +17,8 @@ public class TextFileReader {
     //grupa izuzetaka po cijem ce sablonu java kreirati objekte su runtimeexception
     //mozda ovaj file uopce ne postoji
     //filePath - putanja do fajla
+    //nece pustit tog nekog na miru dok se ne definira uzrok
+    //dio potpisa metode,
     public  void readFile(String filePath ) throws TextFileNotFoundException {
         File file = new File(filePath);
         if(!file.exists()) {

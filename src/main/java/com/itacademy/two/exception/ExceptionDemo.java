@@ -1,4 +1,4 @@
-package com.itacademy;
+package com.itacademy.two.exception;
 
 import com.itacademy.one.animal.Bird;
 
@@ -21,7 +21,7 @@ import com.itacademy.one.animal.Bird;
  *  --RuntimeException -sve greske koje nasljeduju JRE su greske koje nastaju dok se program izvrsava
  *  i pripadaju grupi Runtime
  *
- *  UCHECKED 
+ *  UNCHECKED
  */
 public class ExceptionDemo {
     public static void main(String[] args) {

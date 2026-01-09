@@ -1,0 +1,9 @@
+nesto od sadzaja posotji u ovom fajlu
+mi smo danas dosta toga naucili
+imamo checked vs unchecked
+imamo one izuzetke koji nam ne dopustaju izuzetke kompajliranje dok ne kazemo kako zemo izaci na kraj snjim
+odnosno takvi izuzetci moraju imati blok koda koji se izvrsava i reagira na njih
+Drugi izuzetci se desavaju tj nam dopustaju kompajliranje ali nam pada program u toku izvrsavanja ili u Runtime
+
+Treca grupa izuzetaka su error -- na njih ne mozemo utjecati
+tipa racunal ostaje bez memorije
