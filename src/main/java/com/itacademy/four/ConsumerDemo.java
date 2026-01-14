@@ -1,4 +1,9 @@
-package com.itacademy.four.io;
+package com.itacademy.four;
+
+import com.itacademy.four.io.reader.ReaderFactory;
+import com.itacademy.four.io.reader.ReaderType;
+import com.itacademy.four.io.reader.Reader;
+import com.itacademy.four.io.reader.ReaderException;
 
 /**
  * ideja je da ovdje ne pozivamo konstruktor i ne konstruiramo objekte

@@ -1,7 +1,5 @@
-package com.itacademy.four.io;
+package com.itacademy.four.io.reader;
 
-import javax.imageio.IIOException;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 

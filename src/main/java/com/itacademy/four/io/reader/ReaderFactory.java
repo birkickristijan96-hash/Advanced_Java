@@ -1,4 +1,4 @@
-package com.itacademy.four.io;
+package com.itacademy.four.io.reader;
 
 /**
  * da bi kreira Reader moram imati neki input parametar moramo definissati nekakav tip Readera

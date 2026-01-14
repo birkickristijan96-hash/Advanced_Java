@@ -1,7 +1,6 @@
-package com.itacademy.four.io;
+package com.itacademy.four.io.reader;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
