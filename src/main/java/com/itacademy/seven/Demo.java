@@ -1,10 +1,16 @@
 package com.itacademy.seven;
 
+import com.itacademy.four.io.writer.Writer;
+import com.itacademy.four.io.writer.WriterType;
+import com.itacademy.six.Demo.Gender;
 import com.itacademy.six.Demo.Person;
 import com.itacademy.six.Demo.PersonReader;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 /**
  * Lambda sa kolekcijom odlicno
@@ -45,6 +51,10 @@ import java.util.List;
  *           4. Function <T, R>
  *               R apply(T takenParam); -> uzme taj T napravi neto sanjim i pretvori ga u R
  *               (Transformira ili transformer interface)
+ *
+ *               LAMBDA KREIRA OBJEKTE SAMO FUNKCIONALNOG INTERFACEA,A OVO GORE SU NAVEDENA
+ *               4 FUNKCIONALNA INTERFACE KOJIMA MOZEMO RIJESIT SKORO SVE PROBLEME NASEG ZIIIIVOTAA
+ *               U PROGRAMIRANJU
  */
 
 public class Demo {
@@ -52,23 +62,81 @@ public class Demo {
 
         PersonReader personReader = new PersonReader();
         List<Person> personList = personReader.readPerson("persons.csv");
-        printPersons(personList);
+        //printPersons(personList);
+        //genericPrintPersons(personList, person -> true);
 
+        //ovdje je definicija testiranja
+        //genericPrintPersons(personList, person -> person.getAge()<40);
+       // genericPrintPersons(personList, person -> person.getAge()<24);
+//        Predicate<Person> personPredicate = person -> person.getAge()>=30 && person.getAge()<=40;
+//        genericPrintPersons(personList, personPredicate);
+//        Predicate<Person> tester = person -> person.getAge() > 45;
+//        tester.test(new Person());
+        //bolji nacin poredenja je ovako
+
+        Writer writer = WriterType.BYTE_WRITER.getWriter();
+        //accept =>output void;   input: Person persona
+        //testirati objekat
+        //tester
+        Predicate <Person> tester = person -> Gender.FEMALE.equals(person.getGender());
+        //Transformacija Person -> String
+        //transformer
+        Function<Person, String> personTransformer = person -> person.getName() + " " + person.getSurname();
+        //consumer
+        Consumer<String> consumer = personText -> System.out.println(personText); //ovaj blok koda poziva accpet
+               // procesPersonList(personList, tester, personTransformer, consumer);
+
+        /**
+         * prije java 8 smo iterirali a sada streamamo kroz kolekciju
+         *
+         */
+
+        personList
+                //strimamo kroz kolekciju
+                .stream()
+                //filtriramo, samo oni koji su prosli test ostaju
+                .filter(tester)//Stream<Person>
+                //ulaz u map bude stream od Person a izlaz stream od stringova
+                .map(personTransformer)
+                //definira nacin na koji ce oni biti konzumirani
+                .forEach(consumer);
     }
 
-    //List vs set
-    //1. lista dozvoljava duplikate set ne
-    //2. lista pamti redoslijed, set ima neki svoj koji nije nas
-    //3.lista podrzava indeksiran pristup set ne podrzava indeksiran pristup
-    // lista je najslicnija sa nizovima, liste su nesto sto je najcesce koristeno u kolekcijama
-    private static void printPersons(Collection<Person> personCollection) {
-        for (Person person: personCollection){
-            System.out.println(person);
-        }
+    /**
+     *  1.Person p -> testiram Predicate test metodu
+     *  2. Person p -> transformaciju String -> Function<Person. String>
+     *  2.String  -> acceptam ili konzumiram kroz metodu accept, Consumer accpet
+     *
+     * @param personCollection
+     * @param personTester
+     * @param personConsumer
+     */
+        //List vs set
+        //1. lista dozvoljava duplikate set ne
+        //2. lista pamti redoslijed, set ima neki svoj koji nije nas
+        //3.lista podrzava indeksiran pristup set ne podrzava indeksiran pristup
+        // lista je najslicnija sa nizovima, liste su nesto sto je najcesce koristeno u kolekcijama
+//        private static void procesPersonList(Collection<Person>personCollection,
+//                                             Predicate < Person > personTester,
+//                                             Function<Person, String> personTransform,
+//                                             Consumer<Person> personConsumer){
+//        //iteriramo kroz kolekciju
+//            for (Person person : personCollection) {
+//                //definira nacin na koji ce biti procesiran jedan person element,
+//                // testira person varijablu u kolekciji
+//                if (personTester.test(person)) ;
+//                //2.transformacija Perosn -> String
+//                String personText = personTransform.apply(person);
+//                //konzumiramo person String represent
+//              personConsumer.accept(personText); //tu se pozivaaaaa
+//                //ovdje je poziv te definicije
+//            }
+//        }
     }
+
 
 //        for (int i=0; i < personList.size(); i++){
 //            Person person = personList.get(i);
 //            System.out.println(person);
 //        }
-    }
+//    }
