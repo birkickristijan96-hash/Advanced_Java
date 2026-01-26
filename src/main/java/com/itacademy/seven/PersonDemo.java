@@ -43,7 +43,7 @@ public class PersonDemo {
 //        //filter nad stream pozvanu i opet smo dobili Stream objekat (modifikovan)
 //        Stream<Person> modifiedStream = personStream.filter(p -> p.getGender().equals(Gender.MALE));
 //        //Pozvao funkciju filter koja je pozvana nad streamo i kao rezultat je dosla modifikovana
-//        Stream<String> stringStream = modifiedStream.map(p -> p.getName() + " " + p.getSurname());
+//        Stream<String> stringStream = modifiedStream.map(p -> p.getName() + " " + p.getLastName());
 //        //3.terminacija streama
 //        personStream.forEach(personName -> System.out.println(personName));
     }

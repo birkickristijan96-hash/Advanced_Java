@@ -1,12 +1,13 @@
 package com.itacademy.third.generic;
 
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  * polja nizova su indeksirana polja klase imenovana
  */
-public class Person {
+public class Person implements Serializable {
     private String name;
     private String surname;
     private LocalDate birthday;
